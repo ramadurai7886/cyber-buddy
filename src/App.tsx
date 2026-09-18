@@ -6,6 +6,7 @@ import { AuthProvider } from './context/AuthContext';
 import { DiscreetProvider, useDiscreet } from './context/DiscreetContext';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
+import { MobileBottomNav } from './components/layout/MobileBottomNav';
 import { Chatbot } from './components/chatbot/Chatbot';
 import { ProtectedRoute } from './components/common/ProtectedRoute';
 
@@ -33,7 +34,7 @@ export const AppContent: React.FC = () => {
   const { isDiscreetMode } = useDiscreet();
   const location = useLocation();
 
-  // When Discreet Mode (Quick Exit) is triggered, mask entire UI with benign Weather View
+  // When Discreet Mode (Quick Exit) is triggered, mask entire UI with benign Calculator / Weather View
   if (isDiscreetMode) {
     return <DiscreetView />;
   }
@@ -45,7 +46,7 @@ export const AppContent: React.FC = () => {
       <ScrollToTop />
       <Navbar />
 
-      <main className="flex-1">
+      <main className="flex-1 pb-20 md:pb-0">
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/emergency" element={<EmergencyPage />} />
@@ -70,6 +71,9 @@ export const AppContent: React.FC = () => {
 
       {/* Floating Assistant available across app */}
       <Chatbot />
+
+      {/* Mobile Ergonomic Bottom Safety Dock */}
+      <MobileBottomNav />
     </div>
   );
 };

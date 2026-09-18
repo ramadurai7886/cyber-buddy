@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   Shield,
   ShieldAlert,
@@ -38,13 +38,15 @@ import { PrintComplaintModal } from '../common/PrintComplaintModal';
 export const EmergencyWizard: React.FC = () => {
   const { t, language } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
+  const locationState = location.state as { query?: string; chipLabel?: string } | null;
 
   // Active step (1 to 14)
   const [step, setStep] = useState(1);
 
   // Form & Wizard State
-  const [userDescription, setUserDescription] = useState('');
-  const [selectedChip, setSelectedChip] = useState<string | null>(null);
+  const [userDescription, setUserDescription] = useState(locationState?.query || '');
+  const [selectedChip, setSelectedChip] = useState<string | null>(locationState?.chipLabel || null);
   const [isVoiceRecording, setIsVoiceRecording] = useState(false);
   const [crimeResult, setCrimeResult] = useState<CrimeClassificationResult | null>(null);
   const [emotionalState, setEmotionalState] = useState<EmotionalState | null>(null);
