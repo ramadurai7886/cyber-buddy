@@ -23,7 +23,7 @@ import { Card } from '../components/common/Card';
 import { Badge } from '../components/common/Badge';
 
 export const LandingPage: React.FC = () => {
-  const { language, setLanguage, supportedLanguages } = useTranslation();
+  const { t, language, setLanguage, supportedLanguages } = useTranslation();
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -32,17 +32,17 @@ export const LandingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
           <span className="flex items-center gap-1.5">
             <ShieldAlert className="w-4 h-4 shrink-0" />
-            In Immediate Danger? 24/7 National Emergency Helplines:
+            {t.panicBanner.inDanger}
           </span>
           <div className="flex items-center gap-4 font-mono text-[11px] font-bold">
             <a href="tel:1930" className="hover:underline flex items-center gap-1">
-              <PhoneCall className="w-3 h-3" /> Cyber Crime: 1930
+              <PhoneCall className="w-3 h-3" /> {t.panicBanner.cyberCrime}
             </a>
             <a href="tel:181" className="hover:underline flex items-center gap-1">
-              <PhoneCall className="w-3 h-3" /> Women Helpline: 181
+              <PhoneCall className="w-3 h-3" /> {t.panicBanner.womenHelpline}
             </a>
             <a href="tel:18005990019" className="hover:underline flex items-center gap-1">
-              <PhoneCall className="w-3 h-3" /> Counseling (KIRAN): 1800-599-0019
+              <PhoneCall className="w-3 h-3" /> {t.panicBanner.counseling}
             </a>
           </div>
         </div>
@@ -54,19 +54,19 @@ export const LandingPage: React.FC = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/10 text-rose-700 dark:text-rose-400 border border-rose-500/25 text-xs font-semibold">
             <Heart className="w-3.5 h-3.5 fill-current" />
-            <span>Confidential First-Aid & Counseling for Women in India</span>
+            <span>{t.hero.badge}</span>
           </div>
 
           {/* Headline & Tagline */}
           <div className="space-y-3">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 max-w-4xl mx-auto leading-tight">
-              From Fear to Action, <br className="hidden sm:inline" />
+              {t.hero.title1} <br className="hidden sm:inline" />
               <span className="bg-gradient-to-r from-rose-600 via-brand-500 to-cyber-500 bg-clip-text text-transparent">
-                From Silence to Justice.
+                {t.hero.title2}
               </span>
             </h1>
             <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-              If you are facing online blackmail, morphed photos, fake profiles, cyberstalking, or abusive threats — Cyber Buddy provides immediate emotional first-aid, evidence locking, and official reporting guidance.
+              {t.hero.description}
             </p>
           </div>
 
@@ -80,35 +80,31 @@ export const LandingPage: React.FC = () => {
                     <ShieldAlert className="w-7 h-7" />
                   </div>
                   <span className="px-2.5 py-1 rounded-full text-[11px] font-mono font-bold bg-rose-500/15 text-rose-600 dark:text-rose-400">
-                    NO LOGIN REQUIRED
+                    {t.hero.opt1Badge}
                   </span>
                 </div>
 
                 <div>
                   <h3 className="text-xl font-extrabold text-slate-900 dark:text-slate-100">
-                    1. Emergency Help
+                    {t.hero.opt1Title}
                   </h3>
                   <p className="text-xs text-slate-500 mt-1">
-                    For victims who are panicked and need immediate help right now.
+                    {t.hero.opt1Desc}
                   </p>
                 </div>
 
                 <ul className="space-y-2 text-xs text-slate-600 dark:text-slate-300 pt-1">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-rose-500 shrink-0" />
-                    <span>Instant AI situation assessment & "NOT your fault" reassurance</span>
+                    <span>{t.hero.opt1Feature1}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-rose-500 shrink-0" />
-                    <span>Free 24/7 Government Counseling (KIRAN 1800-599-0019)</span>
+                    <span>{t.hero.opt1Feature2}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-rose-500 shrink-0" />
-                    <span>Lock screenshots locally with device PIN</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-rose-500 shrink-0" />
-                    <span>Auto-draft formal complaint for cybercrime.gov.in</span>
+                    <span>{t.hero.opt1Feature3}</span>
                   </li>
                 </ul>
               </div>
@@ -121,7 +117,7 @@ export const LandingPage: React.FC = () => {
                     rightIcon={<ArrowRight className="w-4 h-4" />}
                     className="w-full justify-center bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm shadow-md"
                   >
-                    Start Emergency Help
+                    {t.hero.opt1Btn}
                   </Button>
                 </Link>
                 <p className="text-[11px] text-center text-slate-400 mt-2">
@@ -138,35 +134,31 @@ export const LandingPage: React.FC = () => {
                     <Shield className="w-7 h-7 text-cyber-500" />
                   </div>
                   <span className="px-2.5 py-1 rounded-full text-[11px] font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
-                    REGISTERED PROFILE
+                    {t.hero.opt2Badge}
                   </span>
                 </div>
 
                 <div>
                   <h3 className="text-xl font-extrabold text-slate-900 dark:text-slate-100">
-                    2. Normal Mode
+                    {t.hero.opt2Title}
                   </h3>
                   <p className="text-xs text-slate-500 mt-1">
-                    For users who want to save cases, track progress, and access long-term support.
+                    {t.hero.opt2Desc}
                   </p>
                 </div>
 
                 <ul className="space-y-2 text-xs text-slate-600 dark:text-slate-300 pt-1">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-cyber-500 shrink-0" />
-                    <span>Track case progress with step-by-step checklist</span>
+                    <span>{t.hero.opt2Feature1}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-cyber-500 shrink-0" />
-                    <span>Biometric & PIN-locked private evidence vault</span>
+                    <span>{t.hero.opt2Feature2}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-cyber-500 shrink-0" />
-                    <span>Permanent access to Mental Wellness Corner</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-cyber-500 shrink-0" />
-                    <span>Emergency SOS alert to trusted contact</span>
+                    <span>{t.hero.opt2Feature3}</span>
                   </li>
                 </ul>
               </div>
@@ -179,7 +171,7 @@ export const LandingPage: React.FC = () => {
                     rightIcon={<ArrowRight className="w-4 h-4" />}
                     className="w-full justify-center text-sm font-semibold"
                   >
-                    Login / Create Profile
+                    {t.hero.opt2Btn}
                   </Button>
                 </Link>
                 <p className="text-[11px] text-center text-slate-400 mt-2">
@@ -194,7 +186,7 @@ export const LandingPage: React.FC = () => {
             <p className="text-xs text-slate-500 flex items-center justify-center gap-1.5">
               <EyeOff className="w-4 h-4 text-rose-500" />
               <span>
-                Safety Tip: The <strong>Quick Exit</strong> button at the top instantly hides this app with a benign Weather forecast.
+                Safety Tip: The <strong>Quick Exit</strong> button at the top instantly disguises this app with a functional Calculator or live Weather radar.
               </span>
             </p>
           </div>

@@ -4,8 +4,10 @@ import { Card } from '../components/common/Card';
 import { Button } from '../components/common/Button';
 import { Badge } from '../components/common/Badge';
 import { GOVERNMENT_HELPLINES, GOVERNMENT_PORTALS, PLATFORM_TAKEDOWNS, INDIAN_CYBER_LAWS } from '../services/emergencyService';
+import { useTranslation } from '../context/LanguageContext';
 
 export const HelplinesPage: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className="min-h-[calc(100vh-4rem)] bg-slate-50 dark:bg-slate-950 py-10 px-4 sm:px-6 lg:px-8 transition-colors">
       <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in">
@@ -16,10 +18,10 @@ export const HelplinesPage: React.FC = () => {
             <span>24/7 Verified Helplines Directory</span>
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
-            Emergency & Counseling Helplines
+            {t.helplines.title}
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
-            All helplines listed here are free of cost, run by the Government of India or premier recognized organizations, and provide confidential assistance.
+            {t.helplines.subtitle}
           </p>
         </div>
 
@@ -32,7 +34,7 @@ export const HelplinesPage: React.FC = () => {
             <div className="pt-2">
               <a href="tel:181" className="inline-block w-full">
                 <Button variant="secondary" size="sm" className="w-full text-rose-700 bg-white font-bold">
-                  Call 181 Now
+                  {t.helplines.call181}
                 </Button>
               </a>
             </div>
@@ -45,7 +47,7 @@ export const HelplinesPage: React.FC = () => {
             <div className="pt-2">
               <a href="tel:1930" className="inline-block w-full">
                 <Button variant="secondary" size="sm" className="w-full text-teal-800 bg-white font-bold">
-                  Call 1930 Now
+                  {t.helplines.call1930}
                 </Button>
               </a>
             </div>
@@ -58,7 +60,7 @@ export const HelplinesPage: React.FC = () => {
             <div className="pt-2">
               <a href="tel:18005990019" className="inline-block w-full">
                 <Button variant="secondary" size="sm" className="w-full text-indigo-800 bg-white font-bold">
-                  Call KIRAN Now
+                  {t.helplines.callKiran}
                 </Button>
               </a>
             </div>
@@ -97,7 +99,7 @@ export const HelplinesPage: React.FC = () => {
                     leftIcon={<PhoneCall className="w-3.5 h-3.5" />}
                     className="font-bold"
                   >
-                    Call Helpline
+                    {t.common.callNow}
                   </Button>
                 </a>
               </div>
@@ -108,7 +110,7 @@ export const HelplinesPage: React.FC = () => {
         {/* Portals */}
         <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
           <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100">
-            Official Online Portals
+            {t.helplines.portalsTitle}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {GOVERNMENT_PORTALS.map((portal, idx) => (
@@ -143,7 +145,7 @@ export const HelplinesPage: React.FC = () => {
               <span>Direct Intermediary Grievance & Content Removal</span>
             </div>
             <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100">
-              Platform Abuse Forms & Hash-Sharing Tools
+              {t.helplines.platformTakedownsTitle}
             </h2>
             <p className="text-xs text-slate-500">
               Direct official reporting channels to remove fake accounts, abusive messages, and intimate photos without filing police complaints.
@@ -193,7 +195,7 @@ export const HelplinesPage: React.FC = () => {
               <span>Indian Legal Framework</span>
             </div>
             <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100">
-              Know Your Rights: Indian Penal & Cyber Laws
+              {t.helplines.legalRightsTitle}
             </h2>
             <p className="text-xs text-slate-500">
               Indian law provides stringent penalties against blackmail, non-consensual image sharing, and cyberstalking against women.

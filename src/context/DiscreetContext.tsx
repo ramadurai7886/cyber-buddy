@@ -1,37 +1,65 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
+export type DiscreetModel = 'calculator' | 'weather';
+
 interface DiscreetContextType {
   isDiscreetMode: boolean;
-  triggerQuickExit: () => void;
+  discreetModel: DiscreetModel;
+  setDiscreetModel: (model: DiscreetModel) => void;
+  triggerQuickExit: (model?: DiscreetModel) => void;
   exitDiscreetMode: () => void;
 }
 
 const DiscreetContext = createContext<DiscreetContextType | undefined>(undefined);
 
 export const DiscreetProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isDiscreetMode, setIsDiscreetMode] = useState(false);
+  const [isDiscreetMode, setIsDiscreetMode] = useState<boolean>(() => {
+    return localStorage.getItem('cyberbuddy_discreet_mode') === 'true';
+  });
 
-  // Allow ESC key x2 or Alt+Q shortcut for instant quick exit
+  const [discreetModel, setDiscreetModelState] = useState<DiscreetModel>(() => {
+    return (localStorage.getItem('cyberbuddy_discreet_model') as DiscreetModel) || 'calculator';
+  });
+
+  const setDiscreetModel = (model: DiscreetModel) => {
+    setDiscreetModelState(model);
+    localStorage.setItem('cyberbuddy_discreet_model', model);
+  };
+
+  // Allow ESC key or Alt+Q shortcut for instant quick exit
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.altKey && e.key.toLowerCase() === 'q') || e.key === 'Escape') {
-        setIsDiscreetMode(true);
+        triggerQuickExit();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [discreetModel]);
 
-  const triggerQuickExit = () => {
+  const triggerQuickExit = (model?: DiscreetModel) => {
+    if (model) {
+      setDiscreetModel(model);
+    }
     setIsDiscreetMode(true);
+    localStorage.setItem('cyberbuddy_discreet_mode', 'true');
   };
 
   const exitDiscreetMode = () => {
     setIsDiscreetMode(false);
+    localStorage.removeItem('cyberbuddy_discreet_mode');
   };
 
   return (
-    <DiscreetContext.Provider value={{ isDiscreetMode, triggerQuickExit, exitDiscreetMode }}>
+    <DiscreetContext.Provider
+      value={{
+        isDiscreetMode,
+        discreetModel,
+        setDiscreetModel,
+        triggerQuickExit,
+        exitDiscreetMode,
+      }}
+    >
       {children}
     </DiscreetContext.Provider>
   );

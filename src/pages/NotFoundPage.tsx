@@ -27,7 +27,7 @@ export const NotFoundPage: React.FC = () => {
         <div>
           <Link to="/">
             <Button variant="primary" size="md" leftIcon={<ArrowLeft className="w-4 h-4" />}>
-              Return to Studio Home
+              Return to {t.common.appName} Home
             </Button>
           </Link>
         </div>

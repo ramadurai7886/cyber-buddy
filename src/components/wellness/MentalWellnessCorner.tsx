@@ -25,6 +25,7 @@ import { calmingAudio } from '../../utils/audioChime';
 import { ShareStoryModal } from './ShareStoryModal';
 import { SurvivorStory } from '../../types/emergency';
 import { StorageService } from '../../services/storageService';
+import { useTranslation } from '../../context/LanguageContext';
 
 const DAILY_AFFIRMATIONS = [
   "You survived the hardest moment. You are safe now, and healing is your right.",
@@ -100,6 +101,7 @@ const GROUNDING_STEPS = [
 ];
 
 export const MentalWellnessCorner: React.FC = () => {
+  const { t } = useTranslation();
   // Active somatic tool toggle
   const [activeTool, setActiveTool] = useState<'breathing' | 'grounding'>('breathing');
 
@@ -196,13 +198,13 @@ export const MentalWellnessCorner: React.FC = () => {
           <div className="space-y-2">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/15 text-rose-600 dark:text-rose-400 text-xs font-bold">
               <Heart className="w-3.5 h-3.5 fill-current" />
-              <span>Compassionate Psychological Support</span>
+              <span>{t.wellness.badge}</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
-              Mental Wellness Corner
+              {t.wellness.title}
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
-              When someone targets you online, the fear, panic, and self-blame are overwhelming. Your emotional safety is just as important as legal reporting. Take a deep breath — we are with you.
+              {t.wellness.subtitle}
             </p>
           </div>
 
@@ -214,7 +216,7 @@ export const MentalWellnessCorner: React.FC = () => {
                 leftIcon={<PhoneCall className="w-4 h-4" />}
                 className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold w-full"
               >
-                Call KIRAN (1800-599-0019)
+                {t.helplines.callKiran}
               </Button>
             </a>
             <a href="tel:181">
@@ -224,7 +226,7 @@ export const MentalWellnessCorner: React.FC = () => {
                 leftIcon={<PhoneCall className="w-4 h-4 text-rose-500" />}
                 className="w-full"
               >
-                Women Helpline 181
+                {t.helplines.call181}
               </Button>
             </a>
           </div>
@@ -234,7 +236,7 @@ export const MentalWellnessCorner: React.FC = () => {
       {/* Daily Affirmation */}
       <Card className="border-cyber-500/30 bg-cyber-500/5 p-6 text-center space-y-2">
         <div className="inline-flex items-center gap-1.5 text-xs uppercase font-mono font-bold tracking-wider text-cyber-600 dark:text-cyber-400">
-          <Sparkles className="w-4 h-4" /> Daily Recovery Affirmation
+          <Sparkles className="w-4 h-4" /> {t.wellness.affirmationTitle}
         </div>
         <p className="text-base sm:text-lg font-medium text-slate-800 dark:text-slate-100 italic max-w-2xl mx-auto">
           "{affirmation}"
@@ -265,7 +267,7 @@ export const MentalWellnessCorner: React.FC = () => {
                   : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
               }`}
             >
-              4-4-4 Breathing
+              {t.wellness.breathingTab}
             </button>
             <button
               type="button"
@@ -276,7 +278,7 @@ export const MentalWellnessCorner: React.FC = () => {
                   : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
               }`}
             >
-              5-4-3-2-1 Grounding
+              {t.wellness.groundingTab}
             </button>
           </div>
 
@@ -435,7 +437,7 @@ export const MentalWellnessCorner: React.FC = () => {
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-bold flex items-center gap-2 text-slate-900 dark:text-slate-100">
                 <BookOpen className="w-4 h-4 text-cyber-500" />
-                Private Emotion Journal
+                {t.wellness.journalTitle}
               </h3>
               <span className="flex items-center gap-1 text-[10px] text-emerald-500 font-mono">
                 <Lock className="w-3 h-3" /> Stays strictly on device
@@ -459,7 +461,7 @@ export const MentalWellnessCorner: React.FC = () => {
               {journalSaved ? 'Saved locally on your device ✓' : ''}
             </span>
             <Button variant="primary" size="sm" onClick={handleSaveJournal}>
-              Save Thought
+              {t.wellness.saveThought}
             </Button>
           </div>
         </Card>
@@ -469,10 +471,10 @@ export const MentalWellnessCorner: React.FC = () => {
       <div className="space-y-4">
         <div>
           <h3 className="text-base font-bold text-slate-900 dark:text-slate-100">
-            Free Government Counseling & Support Helplines
+            {t.helplines.title}
           </h3>
           <p className="text-xs text-slate-500">
-            All numbers below are verified, free of cost, and strictly confidential.
+            {t.helplines.subtitle}
           </p>
         </div>
 
@@ -507,7 +509,7 @@ export const MentalWellnessCorner: React.FC = () => {
                     leftIcon={<PhoneCall className="w-3.5 h-3.5" />}
                     className="text-xs py-1.5"
                   >
-                    Call Now
+                    {t.common.callNow}
                   </Button>
                 </a>
               </div>
@@ -519,7 +521,7 @@ export const MentalWellnessCorner: React.FC = () => {
       {/* Government Support Portals */}
       <div className="space-y-4">
         <h3 className="text-base font-bold text-slate-900 dark:text-slate-100">
-          Official Government Portals & Initiatives
+          {t.helplines.portalsTitle}
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {GOVERNMENT_PORTALS.map((portal, idx) => (
@@ -552,7 +554,7 @@ export const MentalWellnessCorner: React.FC = () => {
           <div>
             <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
               <Smile className="w-4 h-4 text-emerald-500" />
-              Stories of Recovery & Strength
+              {t.wellness.storiesTitle}
             </h3>
             <p className="text-xs text-slate-500">
               Real experiences of Indian women who stood up to cyber harassment and reclaimed their peace.
@@ -564,7 +566,7 @@ export const MentalWellnessCorner: React.FC = () => {
             onClick={() => setIsShareModalOpen(true)}
             leftIcon={<Plus className="w-3.5 h-3.5 text-cyber-500" />}
           >
-            Share Your Story Anonymously
+            {t.wellness.shareStoryBtn}
           </Button>
         </div>
 

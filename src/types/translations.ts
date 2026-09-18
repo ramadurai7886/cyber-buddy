@@ -22,193 +22,111 @@ export interface TranslationSchema {
   common: {
     appName: string;
     tagline: string;
+    subTitle: string;
+    quickExit: string;
+    quickExitHint: string;
     loading: string;
-    error: string;
-    success: string;
     cancel: string;
     save: string;
     back: string;
     next: string;
     close: string;
+    callNow: string;
     demoTag: string;
-    themeLight: string;
-    themeDark: string;
   };
   nav: {
-    features: string;
-    howItWorks: string;
-    assistant: string;
-    docs: string;
-    dashboard: string;
-    login: string;
-    signup: string;
-    getStarted: string;
-    logout: string;
+    emergencyHelp: string;
+    wellnessCorner: string;
+    helplines: string;
+    myDashboard: string;
+    signIn: string;
+    logOut: string;
+    startNewCase: string;
+  };
+  panicBanner: {
+    inDanger: string;
+    cyberCrime: string;
+    womenHelpline: string;
+    counseling: string;
   };
   hero: {
     badge: string;
-    title: string;
-    highlight: string;
+    title1: string;
+    title2: string;
     description: string;
-    ctaPrimary: string;
-    ctaSecondary: string;
-    terminalTitle: string;
-    terminalStatus: string;
-    trustedBy: string;
+    opt1Title: string;
+    opt1Badge: string;
+    opt1Desc: string;
+    opt1Feature1: string;
+    opt1Feature2: string;
+    opt1Feature3: string;
+    opt1Btn: string;
+    opt2Title: string;
+    opt2Badge: string;
+    opt2Desc: string;
+    opt2Feature1: string;
+    opt2Feature2: string;
+    opt2Feature3: string;
+    opt2Btn: string;
   };
-  features: {
+  wizard: {
+    step: string;
+    privacyTitle: string;
+    privacyDesc: string;
+    privacyAgree: string;
+    whatHappenedTitle: string;
+    whatHappenedSubtitle: string;
+    inputPlaceholder: string;
+    voiceRecording: string;
+    voiceRecordingActive: string;
+    chipThreat: string;
+    chipFakeProfile: string;
+    chipMorphed: string;
+    chipAbuse: string;
+    chipStalking: string;
+    chipDontKnow: string;
+    reassuranceTitle: string;
+    reassuranceText: string;
+    emotionalCheckinTitle: string;
+    scared: string;
+    sad: string;
+    angry: string;
+    ashamed: string;
+    ready: string;
+    safetyRulesTitle: string;
+    safetyRule1: string;
+    safetyRule2: string;
+    safetyRule3: string;
+    complaintDraftTitle: string;
+    copyDraft: string;
+    copied: string;
+    saveTxt: string;
+    printPdf: string;
+    finishWithoutSaving: string;
+    createProfile: string;
+    wipeTraces: string;
+  };
+  wellness: {
     title: string;
-    subtitle: string;
-    vulnerabilityScan: {
-      title: string;
-      desc: string;
-    };
-    aiRemediation: {
-      title: string;
-      desc: string;
-    };
-    devsecopsPipeline: {
-      title: string;
-      desc: string;
-    };
-    apiGuardian: {
-      title: string;
-      desc: string;
-    };
-    threatModeler: {
-      title: string;
-      desc: string;
-    };
-    complianceReady: {
-      title: string;
-      desc: string;
-    };
-  };
-  howItWorks: {
-    title: string;
-    subtitle: string;
-    step1: { title: string; desc: string };
-    step2: { title: string; desc: string };
-    step3: { title: string; desc: string };
-    step4: { title: string; desc: string };
-  };
-  aiSection: {
     badge: string;
-    title: string;
-    description: string;
-    feature1: string;
-    feature2: string;
-    feature3: string;
-    promptPlaceholder: string;
+    subtitle: string;
+    breathingTab: string;
+    groundingTab: string;
+    affirmationTitle: string;
+    journalTitle: string;
+    saveThought: string;
+    storiesTitle: string;
+    shareStoryBtn: string;
   };
-  multilingualSection: {
-    badge: string;
-    title: string;
-    description: string;
-    selectLanguageHint: string;
-  };
-  benefits: {
+  helplines: {
     title: string;
     subtitle: string;
-    metric1: { value: string; label: string };
-    metric2: { value: string; label: string };
-    metric3: { value: string; label: string };
-    metric4: { value: string; label: string };
-  };
-  cta: {
-    title: string;
-    description: string;
-    button: string;
-    demoNote: string;
-  };
-  auth: {
-    loginTitle: string;
-    loginSubtitle: string;
-    emailLabel: string;
-    emailPlaceholder: string;
-    passwordLabel: string;
-    passwordPlaceholder: string;
-    showPassword: string;
-    hidePassword: string;
-    rememberMe: string;
-    forgotPassword: string;
-    loginButton: string;
-    loggingIn: string;
-    demoLoginButton: string;
-    noAccount: string;
-    signUpLink: string;
-    haveAccount: string;
-    signInLink: string;
-    signupTitle: string;
-    signupSubtitle: string;
-    fullNameLabel: string;
-    fullNamePlaceholder: string;
-    confirmPasswordLabel: string;
-    preferredLanguageLabel: string;
-    termsAgree: string;
-    signupButton: string;
-    signingUp: string;
-    passwordStrength: {
-      weak: string;
-      medium: string;
-      strong: string;
-    };
-    forgotTitle: string;
-    forgotSubtitle: string;
-    resetButton: string;
-    sendingReset: string;
-    resetSuccess: string;
-    errors: {
-      emailRequired: string;
-      emailInvalid: string;
-      passwordRequired: string;
-      invalidLogin: string;
-      nameRequired: string;
-      passwordLength: string;
-      passwordMismatch: string;
-      termsRequired: string;
-    };
-  };
-  dashboard: {
-    welcome: string;
-    subtitle: string;
-    stats: {
-      activeScans: string;
-      threatShields: string;
-      vulnsPatched: string;
-      securityScore: string;
-    };
-    quickActions: {
-      title: string;
-      newScan: string;
-      auditRepo: string;
-      sandbox: string;
-      compliance: string;
-    };
-    recentActivity: {
-      title: string;
-      subtitle: string;
-      colTarget: string;
-      colType: string;
-      colSeverity: string;
-      colStatus: string;
-      colTime: string;
-      emptyState: string;
-    };
-    scanModal: {
-      title: string;
-      subtitle: string;
-      scanning: string;
-      complete: string;
-      foundIssues: string;
-      remediate: string;
-      close: string;
-    };
-    stateToggle: {
-      normal: string;
-      loading: string;
-      empty: string;
-    };
+    call181: string;
+    call1930: string;
+    callKiran: string;
+    portalsTitle: string;
+    legalRightsTitle: string;
+    platformTakedownsTitle: string;
   };
   chatbot: {
     title: string;
@@ -230,25 +148,5 @@ export interface TranslationSchema {
       needHelp: string;
       scanCode: string;
     };
-    responses: {
-      howToUse: string;
-      explainPage: string;
-      whatCanIDo: string;
-      changeLanguage: string;
-      changeTheme: string;
-      howToLogin: string;
-      createAccount: string;
-      needHelp: string;
-      scanCode: string;
-      fallback: string;
-    };
-  };
-  footer: {
-    description: string;
-    product: string;
-    resources: string;
-    company: string;
-    legal: string;
-    rights: string;
   };
 }

@@ -32,10 +32,10 @@ export const Navbar: React.FC = () => {
   };
 
   const navLinks = [
-    { name: '🚨 Emergency Help', href: '/emergency' },
-    { name: '🌸 Wellness Corner', href: '/wellness' },
-    { name: '📞 Helplines', href: '/helplines' },
-    { name: '📁 My Dashboard', href: '/dashboard' },
+    { name: t.nav.emergencyHelp, href: '/emergency' },
+    { name: t.nav.wellnessCorner, href: '/wellness' },
+    { name: t.nav.helplines, href: '/helplines' },
+    { name: t.nav.myDashboard, href: '/dashboard' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -56,12 +56,12 @@ export const Navbar: React.FC = () => {
               <div className="flex flex-col">
                 <div className="flex items-center gap-1.5">
                   <span className="font-extrabold text-base tracking-tight text-slate-900 dark:text-slate-100">
-                    Cyber Buddy
+                    {t.common.appName}
                   </span>
                   <Heart className="w-3.5 h-3.5 text-rose-500 fill-current" />
                 </div>
                 <span className="text-[10px] text-slate-500 dark:text-slate-400 -mt-1 font-medium">
-                  Women Cyber First-Aid
+                  {t.common.subTitle}
                 </span>
               </div>
             </Link>
@@ -115,7 +115,7 @@ export const Navbar: React.FC = () => {
             ) : (
               <Link to="/login" className="pl-1">
                 <Button variant="secondary" size="sm">
-                  Login / Profile
+                  {t.nav.signIn}
                 </Button>
               </Link>
             )}
@@ -171,13 +171,13 @@ export const Navbar: React.FC = () => {
                   leftIcon={<LogOut className="w-4 h-4 text-rose-500" />}
                   className="w-full text-rose-500"
                 >
-                  Log Out
+                  {t.nav.logOut}
                 </Button>
               </div>
             ) : (
               <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
                 <Button variant="primary" size="md" className="w-full justify-center mt-2">
-                  Login / Create Profile
+                  {t.nav.signIn}
                 </Button>
               </Link>
             )}

@@ -9,7 +9,7 @@ import { useAuth } from '../context/AuthContext';
 import { useTranslation } from '../context/LanguageContext';
 
 export const LoginPage: React.FC = () => {
-  const { supportedLanguages } = useTranslation();
+  const { t, supportedLanguages } = useTranslation();
   const { login, demoLogin } = useAuth();
   const navigate = useNavigate();
 
@@ -75,12 +75,12 @@ export const LoginPage: React.FC = () => {
             </div>
           </Link>
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-            {authStep === 1 && 'Normal Mode • Enter Phone'}
+            {authStep === 1 && t.hero.opt2Title}
             {authStep === 2 && 'Verify 6-Digit OTP'}
             {authStep === 3 && 'Complete Safety Profile'}
           </h2>
           <p className="text-xs text-slate-500 max-w-xs mx-auto">
-            Create a protected account to securely track case progress, access the private vault, and receive ongoing wellness support.
+            {t.hero.opt2Desc}
           </p>
         </div>
 

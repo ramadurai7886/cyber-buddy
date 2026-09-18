@@ -2,6 +2,28 @@
   "name": "cyber-buddy",
   "private": true,
   "version": "1.0.0",
+  "description": "AI-Powered Cyber First-Aid & Mental Health Support Platform for Women in India",
+  "author": "Ramadurai",
+  "license": "MIT",
+  "homepage": "https://github.com/ramadurai7886/cyber-buddy#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ramadurai7886/cyber-buddy.git"
+  },
+  "keywords": [
+    "cybercrime",
+    "women-safety",
+    "first-aid",
+    "mental-health",
+    "india",
+    "it-act",
+    "confidentiality",
+    "privacy",
+    "react",
+    "typescript",
+    "vite",
+    "tailwind"
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite",

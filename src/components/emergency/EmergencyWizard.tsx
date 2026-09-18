@@ -67,12 +67,12 @@ export const EmergencyWizard: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const quickChips = [
-    { label: 'Threatened with leak', query: 'Someone is threatening to leak private photos or messages' },
-    { label: 'Fake Profile of me', query: 'Someone created a fake profile with my pictures and name' },
-    { label: 'Photos Misused / Morphed', query: 'My personal photos were morphed or shared without consent' },
-    { label: 'Abusive Messages', query: 'Receiving continuous vulgar, abusive messages and insults' },
-    { label: 'Cyberstalking', query: 'Someone is obsessively tracking my accounts and following me' },
-    { label: "I don't know what to do", query: 'I am in extreme fear and need immediate safety guidance' },
+    { label: t.wizard.chipThreat, query: 'Someone is threatening to leak private photos or messages' },
+    { label: t.wizard.chipFakeProfile, query: 'Someone created a fake profile with my pictures and name' },
+    { label: t.wizard.chipMorphed, query: 'My personal photos were morphed or shared without consent' },
+    { label: t.wizard.chipAbuse, query: 'Receiving continuous vulgar, abusive messages and insults' },
+    { label: t.wizard.chipStalking, query: 'Someone is obsessively tracking my accounts and following me' },
+    { label: t.wizard.chipDontKnow, query: 'I am in extreme fear and need immediate safety guidance' },
   ];
 
   const handleSelectChip = (chip: typeof quickChips[0]) => {
@@ -230,9 +230,9 @@ export const EmergencyWizard: React.FC = () => {
       <div className="mb-8">
         <div className="flex items-center justify-between text-xs text-slate-500 mb-2">
           <span className="font-semibold text-cyber-600 dark:text-cyber-400">
-            Emergency Mode • Step {step} of 14
+            {t.hero.opt1Title} • {t.wizard.step} {step} / 14
           </span>
-          <span>No Login Required</span>
+          <span>{t.common.appName}</span>
         </div>
         <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
           <div
@@ -250,10 +250,10 @@ export const EmergencyWizard: React.FC = () => {
           </div>
           <div className="space-y-2">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-              Your Privacy & Safety are Protected
+              {t.wizard.privacyTitle}
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              We know you may be in intense panic or fear.
+              {t.wizard.privacyDesc}
             </p>
             <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/25 space-y-1.5 text-xs text-emerald-800 dark:text-emerald-300 font-medium">
               <p>• Everything you enter in Emergency Mode stays strictly on your device.</p>
@@ -269,7 +269,7 @@ export const EmergencyWizard: React.FC = () => {
             rightIcon={<ArrowRight className="w-4 h-4" />}
             className="w-full justify-center"
           >
-            I Understand, Guide Me Safely
+            {t.wizard.privacyAgree}
           </Button>
         </Card>
       )}
@@ -278,12 +278,12 @@ export const EmergencyWizard: React.FC = () => {
       {step === 2 && (
         <Card className="p-6 sm:p-8 space-y-6 animate-in fade-in">
           <div className="space-y-2">
-            <Badge variant="cyber">Step 2 • First-Aid Intake</Badge>
+            <Badge variant="cyber">{t.wizard.step} 2</Badge>
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">
-              What happened to you?
+              {t.wizard.whatHappenedTitle}
             </h2>
             <p className="text-xs text-slate-500">
-              Tap a quick chip below, type in your own words, or use voice input.
+              {t.wizard.whatHappenedSubtitle}
             </p>
           </div>
 
@@ -311,7 +311,7 @@ export const EmergencyWizard: React.FC = () => {
               rows={4}
               value={userDescription}
               onChange={e => setUserDescription(e.target.value)}
-              placeholder="Explain briefly what happened... (e.g. Someone is threatening to send private photos to my contacts unless I pay money)"
+              placeholder={t.wizard.inputPlaceholder}
               className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-3.5 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyber-500"
             />
 
@@ -326,7 +326,7 @@ export const EmergencyWizard: React.FC = () => {
                 }`}
               >
                 {isVoiceRecording ? <MicOff className="w-4 h-4 text-rose-500" /> : <Mic className="w-4 h-4 text-cyber-500" />}
-                <span>{isVoiceRecording ? 'Listening... Speak your story' : 'Speak with Voice Input'}</span>
+                <span>{isVoiceRecording ? t.wizard.voiceRecordingActive : t.wizard.voiceRecording}</span>
               </button>
               <span>Confidential • On-device AI</span>
             </div>
@@ -334,7 +334,7 @@ export const EmergencyWizard: React.FC = () => {
 
           <div className="flex justify-between items-center pt-2">
             <Button variant="ghost" size="sm" onClick={() => setStep(1)}>
-              Back
+              {t.common.back}
             </Button>
             <Button
               variant="primary"
@@ -343,7 +343,7 @@ export const EmergencyWizard: React.FC = () => {
               disabled={!userDescription.trim()}
               rightIcon={<ArrowRight className="w-4 h-4" />}
             >
-              Analyze & Guide Me
+              {t.common.next}
             </Button>
           </div>
         </Card>
@@ -355,7 +355,7 @@ export const EmergencyWizard: React.FC = () => {
           <div className="p-4 rounded-xl bg-gradient-to-r from-rose-500/15 via-brand-500/15 to-cyber-500/15 border border-rose-500/30 space-y-2">
             <div className="flex items-center gap-2 text-rose-600 dark:text-rose-400 font-bold text-base">
               <Heart className="w-5 h-5 fill-current" />
-              <span>This is NOT your fault.</span>
+              <span>{t.wizard.reassuranceTitle}</span>
             </div>
             <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
               {crimeResult.reassurance}
@@ -363,7 +363,7 @@ export const EmergencyWizard: React.FC = () => {
           </div>
 
           <div className="space-y-2">
-            <Badge variant="cyber">AI Identified Crime Category</Badge>
+            <Badge variant="cyber">{t.wizard.step} 3</Badge>
             <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
               {crimeResult.title}
             </h3>
@@ -386,7 +386,7 @@ export const EmergencyWizard: React.FC = () => {
 
           <div className="flex justify-between items-center pt-2">
             <Button variant="ghost" size="sm" onClick={() => setStep(2)}>
-              Back
+              {t.common.back}
             </Button>
             <Button
               variant="primary"
@@ -394,7 +394,7 @@ export const EmergencyWizard: React.FC = () => {
               onClick={() => setStep(4)}
               rightIcon={<ArrowRight className="w-4 h-4" />}
             >
-              Emotional Check-In
+              {t.wizard.emotionalCheckinTitle}
             </Button>
           </div>
         </Card>
@@ -404,9 +404,9 @@ export const EmergencyWizard: React.FC = () => {
       {step === 4 && (
         <Card className="p-6 sm:p-8 space-y-6 animate-in fade-in">
           <div className="space-y-2">
-            <Badge variant="cyber">Step 4 • Emotional Check-in</Badge>
+            <Badge variant="cyber">{t.wizard.step} 4</Badge>
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">
-              How are you feeling right now?
+              {t.wizard.emotionalCheckinTitle}
             </h2>
             <p className="text-xs text-slate-500">
               Cybercrime causes real emotional pain. Tell us how you feel so we can support you.
@@ -415,11 +415,11 @@ export const EmergencyWizard: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
-              { key: 'scared', label: '😨 Scared / Panicking', desc: 'My heart is racing and I feel in danger' },
-              { key: 'sad', label: '😢 Sad / Overwhelmed', desc: 'I feel deeply hurt, alone, and crying' },
-              { key: 'ashamed', label: '😔 Ashamed / Guilty', desc: 'I am worried about my family or reputation' },
-              { key: 'angry', label: '😡 Angry / Violated', desc: 'I am furious that someone dared do this' },
-              { key: 'action', label: '💪 Okay / Want to take action', desc: 'I feel ready to collect proof and report' },
+              { key: 'scared', label: t.wizard.scared, desc: 'My heart is racing and I feel in danger' },
+              { key: 'sad', label: t.wizard.sad, desc: 'I feel deeply hurt, alone, and crying' },
+              { key: 'ashamed', label: t.wizard.ashamed, desc: 'I am worried about my family or reputation' },
+              { key: 'angry', label: t.wizard.angry, desc: 'I am furious that someone dared do this' },
+              { key: 'action', label: t.wizard.ready, desc: 'I feel ready to collect proof and report' },
             ].map(item => (
               <button
                 key={item.key}
@@ -501,9 +501,9 @@ export const EmergencyWizard: React.FC = () => {
       {step === 6 && (
         <Card className="p-6 sm:p-8 space-y-6 animate-in fade-in">
           <div className="space-y-2">
-            <Badge variant="cyber">Step 6 • Immediate Protection</Badge>
+            <Badge variant="cyber">{t.wizard.step} 6</Badge>
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">
-              3 Immediate Safety Actions to Take Right Now
+              {t.wizard.safetyRulesTitle}
             </h2>
             <p className="text-xs text-slate-500">
               Follow these three golden rules before taking any other steps.
@@ -513,7 +513,7 @@ export const EmergencyWizard: React.FC = () => {
           <div className="space-y-4">
             <div className="p-4 rounded-xl border border-amber-500/30 bg-amber-500/10 space-y-1">
               <h4 className="text-xs font-bold text-amber-800 dark:text-amber-300 flex items-center gap-1.5">
-                <AlertTriangle className="w-4 h-4" /> 1. DO NOT DELETE ANYTHING
+                <AlertTriangle className="w-4 h-4" /> 1. {t.wizard.safetyRule1}
               </h4>
               <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                 Do not delete chat threads, SMS messages, call logs, or emails out of fear or panic. These are critical digital forensics evidence required to track down the perpetrator.
@@ -522,7 +522,7 @@ export const EmergencyWizard: React.FC = () => {
 
             <div className="p-4 rounded-xl border border-rose-500/30 bg-rose-500/10 space-y-1">
               <h4 className="text-xs font-bold text-rose-800 dark:text-rose-300 flex items-center gap-1.5">
-                <ShieldAlert className="w-4 h-4" /> 2. DO NOT RESPOND TO THREATS OR PAY
+                <ShieldAlert className="w-4 h-4" /> 2. {t.wizard.safetyRule2}
               </h4>
               <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                 Do not negotiate, argue, or pay ransom money. Paying will only invite repeated demands. Stop communication while preserving the thread.
@@ -531,7 +531,7 @@ export const EmergencyWizard: React.FC = () => {
 
             <div className="p-4 rounded-xl border border-cyber-500/30 bg-cyber-500/10 space-y-1">
               <h4 className="text-xs font-bold text-cyber-800 dark:text-cyber-300 flex items-center gap-1.5">
-                <PhoneCall className="w-4 h-4" /> 3. CALL 112 OR 181 IF IN PHYSICAL DANGER
+                <PhoneCall className="w-4 h-4" /> 3. {t.wizard.safetyRule3}
               </h4>
               <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                 If the attacker knows your home or workplace address and threatens physical harm, dial 112 (Police) or 181 (Women Helpline) immediately.
@@ -541,7 +541,7 @@ export const EmergencyWizard: React.FC = () => {
 
           <div className="flex justify-between items-center pt-2">
             <Button variant="ghost" size="sm" onClick={() => setStep(4)}>
-              Back
+              {t.common.back}
             </Button>
             <Button
               variant="primary"
@@ -549,7 +549,7 @@ export const EmergencyWizard: React.FC = () => {
               onClick={() => setStep(7)}
               rightIcon={<ArrowRight className="w-4 h-4" />}
             >
-              Collect & Preserve Proof
+              {t.common.next}
             </Button>
           </div>
         </Card>
@@ -759,9 +759,9 @@ export const EmergencyWizard: React.FC = () => {
         <Card className="p-6 sm:p-8 space-y-6 animate-in fade-in">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <Badge variant="cyber">Step 9 • Complaint Summary</Badge>
+              <Badge variant="cyber">{t.wizard.step} 9</Badge>
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100 mt-1">
-                Auto-Generated Complaint Draft
+                {t.wizard.complaintDraftTitle}
               </h2>
             </div>
             <div className="flex flex-wrap items-center gap-2">
@@ -771,7 +771,7 @@ export const EmergencyWizard: React.FC = () => {
                 onClick={handleCopyDraft}
                 leftIcon={copiedDraft ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
               >
-                {copiedDraft ? 'Copied!' : 'Copy Text'}
+                {copiedDraft ? t.wizard.copied : t.wizard.copyDraft}
               </Button>
               <Button
                 variant="outline"
@@ -787,7 +787,7 @@ export const EmergencyWizard: React.FC = () => {
                 }}
                 leftIcon={<Download className="w-3.5 h-3.5" />}
               >
-                Save .TXT
+                {t.wizard.saveTxt}
               </Button>
               <Button
                 variant="primary"
@@ -796,7 +796,7 @@ export const EmergencyWizard: React.FC = () => {
                 leftIcon={<Printer className="w-3.5 h-3.5" />}
                 className="font-bold"
               >
-                Print / Save PDF
+                {t.wizard.printPdf}
               </Button>
             </div>
           </div>
@@ -811,7 +811,7 @@ export const EmergencyWizard: React.FC = () => {
 
           <div className="flex justify-between items-center pt-2">
             <Button variant="ghost" size="sm" onClick={() => setStep(8)}>
-              Back
+              {t.common.back}
             </Button>
             <Button
               variant="primary"
@@ -819,7 +819,7 @@ export const EmergencyWizard: React.FC = () => {
               onClick={() => setStep(10)}
               rightIcon={<ArrowRight className="w-4 h-4" />}
             >
-              Continue to Official Reporting
+              {t.common.next}
             </Button>
           </div>
         </Card>
@@ -1049,7 +1049,7 @@ export const EmergencyWizard: React.FC = () => {
           </div>
 
           <div className="space-y-2 max-w-sm mx-auto">
-            <Badge variant="cyber">Step 14 • First-Aid Completed</Badge>
+            <Badge variant="cyber">{t.wizard.step} 14 • First-Aid Completed</Badge>
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">
               Save Your Case File?
             </h2>
@@ -1064,14 +1064,14 @@ export const EmergencyWizard: React.FC = () => {
               size="md"
               onClick={() => handleSaveAndExit(true)}
             >
-              Create Profile & Track Case
+              {t.wizard.createProfile}
             </Button>
             <Button
               variant="secondary"
               size="md"
               onClick={() => handleSaveAndExit(false)}
             >
-              Finish Without Saving
+              {t.wizard.finishWithoutSaving}
             </Button>
             <Button
               variant="outline"
@@ -1083,7 +1083,7 @@ export const EmergencyWizard: React.FC = () => {
               leftIcon={<Trash2 className="w-4 h-4 text-rose-500" />}
               className="text-rose-600 dark:text-rose-400 border-rose-200 dark:border-rose-900/50 hover:bg-rose-50 dark:hover:bg-rose-950/20"
             >
-              Wipe Traces & Exit
+              {t.wizard.wipeTraces}
             </Button>
           </div>
         </Card>
